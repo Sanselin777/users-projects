@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  proyect_pg:
+    image: postgres:15.1
+    container_name: proyect_pg
+    restart: always
+    environment:
+      POSTGRES_DB: proyect_db
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: pass1
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
